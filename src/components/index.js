@@ -7,3 +7,5 @@ export {default as Author} from './Author.jsx';
 export {default as CommentsForm} from './CommentsForm.jsx';
 export {default as Comments} from './Comments.jsx';
 export {default as PostDetail} from './PostDetail.jsx';
+export {default as FeaturedPostCard} from './FeaturedPostCard.jsx';
+export {default as Loader} from './Loader.jsx';

@@ -1,38 +1,100 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Mordern Blog Website
 
-First, run the development server:
+### [Live Site](https://blogsite-8lyauv7lm-priyanshu0007.vercel.app/)
+
+![scre](https://github.com/Priyanshu0007/blogsite/blob/main/public/blog.png?raw=true "Optional title")
+
+
+## Description
+
+Experience the future of blogging with our cutting-edge Next.js-powered platform. Our modern blog website offers a sleek and intuitive interface, ensuring a seamless reading experience across devices. Harnessing the power of Next.js, we deliver lightning-fast loading times and dynamic content rendering, making your journey through thought-provoking articles a breeze. Dive into a world of beautifully designed, feature-rich blogs, whether you're a writer seeking a platform or a reader in search of captivating content. Join us in redefining the art of storytelling in the digital age.
+## Built with
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat-square&logo=javascript&logoColor=%23F7DF1E)
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB)
+
+![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white)
+
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white)
+
+![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white)
+
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=flat-square&logo=vercel&logoColor=white)
+
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
+
+
+
+
+
+## Deployment
+
+To deploy this project run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  npm run deploy
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Responsive and beautiful UI
+- Blogs can be added from Hygraph(GraphQl based CMS)
+- Comment can be added after getting approval
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Environment Variables
 
-## Learn More
+To run this project, you will need to add the following environment variables to your .env file
 
-To learn more about Next.js, take a look at the following resources:
+`NEXT_PUBLIC_GRAPHCMS_ENDPOINT`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`GRAPHCMS_TOKEN`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Run Locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Clone the project
+
+```bash
+  git clone https://github.com/Priyanshu0007/blogsite.git
+```
+
+Go to the project directory
+
+```bash
+  cd blogsite
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+
+## Application
+
+This project can used by the following companies:
+
+- Small bloggers
+- Journalists 
+

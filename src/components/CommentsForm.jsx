@@ -38,19 +38,19 @@ function CommentsForm({slug}) {
     })
   }
   return (
-    <div className=" shadow-lg rounded-lg p-8 pb-12 mb-8 bg-gray-300/40  bg-clip-padding  backdrop-blur-sm ">
-      <h3 className='text-xl mb-8 font-semibold border-slate-400 border-b pb-4 text-gray-600'>Add Comment</h3>
+    <div className=" p-8 pb-12 mb-8 bg-white/20 backdrop-blur-md border border-white/30 shadow-xl drop-shadow-md rounded-2xl text-slate-800 transition-all duration-300 hover:bg-white/30 ">
+      <h3 className='text-xl mb-8 font-semibold border-slate-400 border-b pb-4 text-gray-800'>Add Comment</h3>
       <div className='grid grid-cols-1 gap-4 mb-4 opacity-70'>
-        <textarea ref={commentEl} className='p-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700' placeholder="Comment" name="comment"></textarea>
+        <textarea ref={commentEl} className='p-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-800' placeholder="Comment" name="comment"></textarea>
       </div>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4'>
-        <input type="text" ref={nameEl} className='py-4 opacity-70 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700' placeholder='Name' name='name'/>
-        <input type="text" ref={emailEl} className='py-4 opacity-70 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700' placeholder='Email' name='email'/>
+        <input type="text" ref={nameEl} className='py-4 opacity-70 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-800' placeholder='Name' name='name'/>
+        <input type="text" ref={emailEl} className='py-4 opacity-70 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-800' placeholder='Email' name='email'/>
       </div>
       <div className='grid grid-cols-1 gap-4 mb-4'>
         <div>
           <input ref={storeDataEl} type='checkbox' id='storeData' name='storeData' value="true"/>
-          <label className='text-gray-600 cursor-pointer ml-2' htmlFor='storeData'>Save my e-mail and name for the next time i comment.</label>
+          <label className='text-gray-800 cursor-pointer ml-2' htmlFor='storeData'>Save my e-mail and name for the next time i comment.</label>
         </div>
       </div>
       {error && <p className='text-xs text-red-500'>All feilds are required.</p>}

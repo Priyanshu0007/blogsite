@@ -7,7 +7,7 @@ const Categories = () => {
     getCategories().then((newCategories)=>setCategories(newCategories));
   },[])
   return (
-    <div className=' shadow-lg rounded-lg p-8 mb-8 bg-gray-300  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 '>
+    <div className=' shadow-lg rounded-lg p-8 mb-8 bg-gray-300/40  bg-clip-padding  backdrop-blur-sm  '>
       <h3 className='text-xl mb-8 font-semibold border-b border-slate-400 pb-4 text-gray-600'>Categories</h3>
     {categories.map((category)=>(
       <Link key={category.slug} href={`/category/${category.slug}`}>

@@ -38,7 +38,7 @@ function CommentsForm({slug}) {
     })
   }
   return (
-    <div className=" shadow-lg rounded-lg p-8 pb-12 mb-8 bg-gray-300  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40">
+    <div className=" shadow-lg rounded-lg p-8 pb-12 mb-8 bg-gray-300/40  bg-clip-padding  backdrop-blur-sm ">
       <h3 className='text-xl mb-8 font-semibold border-slate-400 border-b pb-4 text-gray-600'>Add Comment</h3>
       <div className='grid grid-cols-1 gap-4 mb-4 opacity-70'>
         <textarea ref={commentEl} className='p-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700' placeholder="Comment" name="comment"></textarea>

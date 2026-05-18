@@ -5,6 +5,8 @@ import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loa
 import { getPosts, getPostDetails } from '../../services';
 import { AdjacentPosts } from '@/sections';
 
+import Head from 'next/head';
+
 const PostDetails = ({ post }) => {
   const router = useRouter();
 
@@ -14,6 +16,14 @@ const PostDetails = ({ post }) => {
 
   return (
       <div className="container mx-auto px-10 mb-8">
+        <Head>
+          <title>{`${post.title} | Travelling Indian`}</title>
+          <meta name="description" content={post.excerpt || `Read ${post.title} on Travelling Indian`} />
+          <meta property="og:title" content={post.title} />
+          <meta property="og:description" content={post.excerpt || `Read ${post.title} on Travelling Indian`} />
+          <meta property="og:image" content={post.featuredImage?.url} />
+          <link rel='icon' href='/favicon.ico'></link>
+        </Head>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="col-span-1 lg:col-span-8">
             <PostDetail post={post} />

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import moment from 'moment';
+import Image from 'next/image';
 
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
@@ -29,12 +30,13 @@ const PostDetail = ({ post }) => {
         return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
       case 'image':
         return (
-          <img
+          <Image
             key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
+            alt={obj.title || 'Post Image'}
+            height={obj.height || 400}
+            width={obj.width || 800}
             src={obj.src}
+            style={{ width: '100%', height: 'auto' }}
           />
         );
       default:
@@ -45,16 +47,16 @@ const PostDetail = ({ post }) => {
   return (
     <>
       <div className="lg:p-8 pb-12 mb-8 bg-white/20 backdrop-blur-md border border-white/30 shadow-xl drop-shadow-md rounded-2xl text-slate-800 transition-all duration-300 hover:bg-white/30  ">
-        <div className="relative overflow-hidden shadow-md mb-6">
-          <img src={post.featuredImage.url} alt="" className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg" />
+        <div className="relative overflow-hidden shadow-md mb-6 h-96 w-full">
+          <Image src={post.featuredImage.url} alt={post.title || "Featured Image"} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" priority className="object-top object-cover shadow-lg rounded-t-lg lg:rounded-lg" />
         </div>
         <div className="px-4 lg:px-0">
           <div className="flex items-center mb-8 w-full">
             <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8">
-              <img
+              <Image
                 alt={post.author.name}
-                height="30px"
-                width="30px"
+                height={30}
+                width={30}
                 className="align-middle rounded-full"
                 src={post.author.photo.url}
               />

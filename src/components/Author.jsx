@@ -6,10 +6,9 @@ const Author = ({author}) => {
       <div className='absoulte left-0 right-0 -top-14'>
       <Image
         unoptimized
-        alt={author.name}
-        height={0}
-        width={0}
-        style={{ width: '100px', height: '100px' }}
+        alt={author.name || 'Author'}
+        height={100}
+        width={100}
         className="align-middle rounded-full object-cover "
         src={author.photo.url}/>
         <h3 className='text-white my-4 text-xl font-bold'>{author.name}</h3>

@@ -14,7 +14,8 @@ const CategoryPost = ({ posts }) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
-          <title>{posts[0].node.categories[0].name}</title>
+          <title>{posts && posts.length > 0 && posts[0].node.categories[0] ? `${posts[0].node.categories[0].name} | Travelling Indian` : 'Category | Travelling Indian'}</title>
+          <meta name="description" content={`Explore all articles about ${posts && posts.length > 0 && posts[0].node.categories[0] ? posts[0].node.categories[0].name : 'this category'} on Travelling Indian.`} />
           <link rel='icon' href='/favicon.ico'></link>
       </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

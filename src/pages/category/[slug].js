@@ -12,7 +12,7 @@ const CategoryPost = ({ posts }) => {
   }
 
   return (
-    <div className="container mx-auto px-10 mb-8">
+    <div className="container mx-auto px-4 lg:px-10 mb-8">
       <Head>
           <title>{posts && posts.length > 0 && posts[0].node.categories[0] ? `${posts[0].node.categories[0].name} | Travelling Indian` : 'Category | Travelling Indian'}</title>
           <meta name="description" content={`Explore all articles about ${posts && posts.length > 0 && posts[0].node.categories[0] ? posts[0].node.categories[0].name : 'this category'} on Travelling Indian.`} />

@@ -9,7 +9,7 @@ const FeaturedPosts = dynamic(() => import('@/sections/FeaturedPost'), {
 
 export default function Home({posts}) {
   return (
-    <div className='container mx-auto px-10 mb-8'>
+    <div className='container mx-auto px-4 lg:px-10 mb-8'>
       <Head>
         <title>Travelling Indian</title>
         <meta name="description" content="A modern blog about travelling in India, showcasing culture, places, and experiences." />

@@ -2,6 +2,23 @@ import { request, gql } from 'graphql-request';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
+/**
+ * Generic helper to make GraphQL requests safely.
+ * Returns null or throws nothing, logging errors to console.
+ */
+const safeRequest = async (query, variables = {}) => {
+  if (!graphqlAPI) {
+    console.error("GraphQL API endpoint is not configured (NEXT_PUBLIC_GRAPHCMS_ENDPOINT is missing or empty).");
+    return null;
+  }
+  try {
+    return await request(graphqlAPI, query, variables);
+  } catch (error) {
+    console.error("GraphQL Request failed:", error.message || error);
+    return null;
+  }
+};
+
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
@@ -34,9 +51,8 @@ export const getPosts = async () => {
     }
   `;
 
-  const result = await request(graphqlAPI, query);
-
-  return result.postsConnection.edges;
+  const result = await safeRequest(query);
+  return result?.postsConnection?.edges || [];
 };
 
 export const getCategories = async () => {
@@ -49,9 +65,8 @@ export const getCategories = async () => {
     }
   `;
 
-  const result = await request(graphqlAPI, query);
-
-  return result.categories;
+  const result = await safeRequest(query);
+  return result?.categories || [];
 };
 
 export const getPostDetails = async (slug) => {
@@ -83,9 +98,8 @@ export const getPostDetails = async (slug) => {
     }
   `;
 
-  const result = await request(graphqlAPI, query, { slug });
-
-  return result.post;
+  const result = await safeRequest(query, { slug });
+  return result?.post || null;
 };
 
 export const getSimilarPosts = async (categories, slug) => {
@@ -104,9 +118,9 @@ export const getSimilarPosts = async (categories, slug) => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query, { slug, categories });
-
-  return result.posts;
+  
+  const result = await safeRequest(query, { slug, categories });
+  return result?.posts || [];
 };
 
 export const getAdjacentPosts = async (createdAt, slug) => {
@@ -139,9 +153,11 @@ export const getAdjacentPosts = async (createdAt, slug) => {
     }
   `;
 
-  const result = await request(graphqlAPI, query, { slug, createdAt });
-
-  return { next: result.next[0], previous: result.previous[0] };
+  const result = await safeRequest(query, { slug, createdAt });
+  return { 
+    next: result?.next?.[0] || null, 
+    previous: result?.previous?.[0] || null 
+  };
 };
 
 export const getCategoryPost = async (slug) => {
@@ -176,9 +192,8 @@ export const getCategoryPost = async (slug) => {
     }
   `;
 
-  const result = await request(graphqlAPI, query, { slug });
-
-  return result.postsConnection.edges;
+  const result = await safeRequest(query, { slug });
+  return result?.postsConnection?.edges || [];
 };
 
 export const getFeaturedPosts = async () => {
@@ -201,23 +216,26 @@ export const getFeaturedPosts = async () => {
     }   
   `;
 
-  const result = await request(graphqlAPI, query);
-
-  return result.posts;
+  const result = await safeRequest(query);
+  return result?.posts || [];
 };
 
 export const submitComment = async (obj) => {
-  const result = await fetch('/api/comments', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(obj),
-  });
+  try {
+    const result = await fetch('/api/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj),
+    });
 
-  return result.json();
+    return await result.json();
+  } catch (error) {
+    console.error("Error submitting comment:", error.message || error);
+    return { error: true, message: error.message || "Failed to submit comment." };
+  }
 };
-
 
 export const getComments = async (slug) => {
   const query = gql`
@@ -230,9 +248,8 @@ export const getComments = async (slug) => {
     }
   `;
 
-  const result = await request(graphqlAPI, query, { slug });
-
-  return result.comments;
+  const result = await safeRequest(query, { slug });
+  return result?.comments || [];
 };
 
 export const getRecentPosts = async () => {
@@ -251,7 +268,6 @@ export const getRecentPosts = async () => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query);
-
-  return result.posts;
+  const result = await safeRequest(query);
+  return result?.posts || [];
 };

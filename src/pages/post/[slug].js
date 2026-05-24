@@ -56,10 +56,19 @@ export default PostDetails;
 
 // Fetch data at request time
 export async function getServerSideProps({ params }) {
-  const data = await getPostDetails(params.slug);
-  return {
-    props: {
-      post: data,
-    },
-  };
+  try {
+    const data = await getPostDetails(params.slug);
+    return {
+      props: {
+        post: data,
+      },
+    };
+  } catch (error) {
+    console.error("getServerSideProps error on /post/[slug]:", error);
+    return {
+      props: {
+        post: null,
+      },
+    };
+  }
 }

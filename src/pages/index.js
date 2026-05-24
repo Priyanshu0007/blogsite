@@ -46,6 +46,11 @@ export default function Home({posts}) {
 }
 
 export async function getServerSideProps(){
-  const posts=(await getPosts())|| [];
-  return {props:{posts}}
+  try {
+    const posts=(await getPosts())|| [];
+    return {props:{posts}}
+  } catch (error) {
+    console.error("getServerSideProps error on /:", error);
+    return {props:{posts:[]}}
+  }
 }

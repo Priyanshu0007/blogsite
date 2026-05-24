@@ -43,9 +43,15 @@ const CategoryPost = ({ posts }) => {
 export default CategoryPost;
 
 export async function getServerSideProps({ params }) {
-  const posts = await getCategoryPost(params.slug);
-
-  return {
-    props: { posts },
-  };
+  try {
+    const posts = await getCategoryPost(params.slug);
+    return {
+      props: { posts: posts || [] },
+    };
+  } catch (error) {
+    console.error("getServerSideProps error on /category/[slug]:", error);
+    return {
+      props: { posts: [] },
+    };
+  }
 }

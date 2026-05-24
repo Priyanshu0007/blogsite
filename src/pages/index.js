@@ -4,6 +4,7 @@ import { PostCard,Categories,PostWidget } from '@/components'
 import { getPosts } from '../services'
 
 const FeaturedPosts = dynamic(() => import('@/sections/FeaturedPost'), {
+  ssr: false,
   loading: () => <div className="text-center w-full py-8">Loading featured posts...</div>,
 });
 
@@ -24,7 +25,14 @@ export default function Home({posts}) {
       <FeaturedPosts/>
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='lg:col-span-8 col-span-1'>
-          {posts.reverse().map((post,index)=>(<PostCard post={post.node} key={index} />))}
+          {posts && posts.length > 0 ? (
+            posts.reverse().map((post,index)=>(<PostCard post={post.node} key={index} />))
+          ) : (
+            <div className="text-center py-20 bg-white/30 backdrop-blur-lg border border-white/40 shadow-xl rounded-3xl">
+              <h2 className="text-2xl font-bold text-gray-800">No Posts Found</h2>
+              <p className="text-gray-600 mt-2">There are no articles published yet.</p>
+            </div>
+          )}
         </div>
         <div className='lg:col-span-4 col-span-1'>
           <div className='lg:sticky relative top-8'>

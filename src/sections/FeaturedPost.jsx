@@ -56,6 +56,10 @@ const FeaturedPosts = () => {
     </ArrowFix>
   );
 
+  if (dataLoaded && (!featuredPosts || featuredPosts.length === 0)) {
+    return null;
+  }
+
   return (
     <div className="mb-8">
       <Carousel infinite customLeftArrow={customLeftArrow} customRightArrow={customRightArrow} responsive={responsive} itemClass="px-4">

@@ -20,9 +20,16 @@ const CategoryPost = ({ posts }) => {
       </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
-          {posts.reverse().map((post, index) => (
-            <PostCard key={index} post={post.node} />
-          ))}
+          {posts && posts.length > 0 ? (
+            posts.reverse().map((post, index) => (
+              <PostCard key={index} post={post.node} />
+            ))
+          ) : (
+            <div className="text-center py-20 bg-white/30 backdrop-blur-lg border border-white/40 shadow-xl rounded-3xl">
+              <h2 className="text-2xl font-bold text-gray-800">No Posts Found</h2>
+              <p className="text-gray-600 mt-2">There are no articles in this category yet.</p>
+            </div>
+          )}
         </div>
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky top-8">

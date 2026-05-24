@@ -14,6 +14,15 @@ const PostDetails = ({ post }) => {
     return <Loader />;
   }
 
+  if (!post) {
+    return (
+      <div className="container mx-auto px-4 lg:px-10 mb-8 text-center py-20 bg-white/30 backdrop-blur-lg border border-white/40 shadow-2xl rounded-3xl mt-8">
+        <h1 className="text-3xl font-bold text-gray-800">Post Not Found</h1>
+        <p className="text-gray-600 mt-4">The article you are looking for does not exist or could not be loaded.</p>
+      </div>
+    );
+  }
+
   return (
       <div className="container mx-auto px-4 lg:px-10 mb-8">
         <Head>
